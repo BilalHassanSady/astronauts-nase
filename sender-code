@@ -1,0 +1,102 @@
+/* documnation section 
+ *  the topic of our code is
+ *  send the message to the mars by laser
+ */
+
+/*haeder */
+/*link section */
+#include <LiquidCrystal.h> //lcd library
+#include <Keypad.h>        //key pad library
+/*end of link section*/
+/*definition section*/
+//key pad section
+const byte ROWS = 4; //the nomber of rows in keypad
+const byte COLS = 4; //the nomber of clumns in keypad
+char keys[ROWS][COLS] = {
+  {'1','2','3','A'},
+  {'4','5','6','B'},
+  {'H','I','J','C'},
+  {'G','F','E','D'}
+}; //key pad character
+byte rowPins[ROWS] = { 12, 11, 10, 9 }; //keypad row pins
+byte colPins[COLS] = { 8, 7, 6, 5 };   //keypad clumne pin
+Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS ); //define key pad to the library
+//end of keypad section
+//lcd section
+const int rs = A0, en = A1, d4 = A2, d5 = A3, d6 = A4, d7 = A5; //Pins to which LCD is connected
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+//end of lcd section
+/*end of definition section*/
+/*veriable*/
+#define laserpin 4
+char da;
+/*end of veriable*/
+/*end of header section*/
+
+void setup() {
+  lcd.begin(16,2); //the number of columns and rows in lcd
+  pinMode(laserpin,OUTPUT);//define the laser pin to output
+}
+
+/*start the main code */
+void loop() {
+     da = kpd.getKey();
+  	lcd_print(da);
+    if(da=='A'){
+          sender(1);         
+      }
+    if(da=='B'){
+          sender(2);         
+      }
+    if(da=='C'){
+          sender(3);              
+      }
+    if(da=='D'){
+          sender(4);               
+      }
+    if(da=='E'){
+          sender(5);           
+      }
+    if(da=='F'){
+          sender(6);           
+      }
+    if(da=='G'){
+          sender(7);              
+        }      
+    if(da=='H'){
+          sender(8);                   
+        }      
+    if(da=='I'){
+          sender(9);             
+      }
+    if(da=='J'){
+          sender(10);         
+      }
+   }
+ /*enf of the main code*/
+  
+/*start the function sectino*/
+/*
+ * @berif : output the light for 250 ms
+ * @parm : integer / the times of blynk
+ * @retun : no
+ */
+  void sender(int i){
+   for(int counter=0;counter<i;counter++){
+           digitalWrite(laserpin,1);
+           delay(150);
+           digitalWrite(laserpin,0); 
+           delay(150);
+   }
+  }
+/*
+ * @berif : print on lcd
+ * @parm : char / the character which print on lcd
+ * @retun : no
+ */
+void lcd_print(char da){
+  if(da){
+   lcd.print(da);      
+  }
+ }
+/*the end */
