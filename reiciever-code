@@ -1,0 +1,51 @@
+/* documnation section 
+ *  the topic of our code is
+ *  recives the message from the earth by laser
+ */
+/*headers*/
+/*linking section*/
+#include<LiquidCrystal.h>
+/*end of linking section*/
+/*definition section*/
+const int rs = 2, en = 3, d4 = 4, d5 = 5, d6 = 6, d7 = 7; //Pins to which LCD is connected
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+/*end of definition section*/
+/*veriable section*/
+bool SW=1;
+bool LSW=1;
+int counter=0;
+int i=3500;
+unsigned long t1 = 0;
+int detect = 8;
+/*end of veriable section*/
+void setup(){
+pinMode(detect,INPUT);
+Serial.begin(9600); }
+/*start the code*/
+void loop(){
+SW=digitalRead(detect);
+if(SW==0 && LSW==1){
+counter++;
+LSW=SW;
+delay(50);
+}
+else if(SW==1 && LSW==0){
+LSW=SW;
+delay(50);} 
+if(millis()>t1+i){
+switch(counter){ 
+  case 1 :Serial.print('b');counter =0;break;
+  case 2 :Serial.print('B');counter =0;break;
+  case 3 :Serial.print('C');counter =0;break;
+  case 4 :Serial.print('D');counter =0;break;
+  case 5 :Serial.print('E');counter =0;break;
+  case 6 :Serial.print('F');counter =0;break;
+  case 7 :Serial.print('G');counter =0;break;
+  case 8 :Serial.print('H');counter =0;break;
+  case 9 :Serial.print('I');counter =0;break;
+  case 10 :Serial.print('J');counter =0;break;
+  default : counter =0;
+}
+}
+}
+/*the end of the code*/
