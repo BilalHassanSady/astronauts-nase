@@ -20,7 +20,7 @@ int detect = 8;
 /*end of veriable section*/
 void setup(){
 pinMode(detect,INPUT);
-Serial.begin(9600); }
+lcd.begin(16 ,2);}
 /*start the code*/
 void loop(){
 SW=digitalRead(detect);
