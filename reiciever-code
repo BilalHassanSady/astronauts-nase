@@ -34,16 +34,16 @@ LSW=SW;
 delay(50);} 
 if(millis()>t1+i){
 switch(counter){ 
-  case 1 :Serial.print('b');counter =0;break;
-  case 2 :Serial.print('B');counter =0;break;
-  case 3 :Serial.print('C');counter =0;break;
-  case 4 :Serial.print('D');counter =0;break;
-  case 5 :Serial.print('E');counter =0;break;
-  case 6 :Serial.print('F');counter =0;break;
-  case 7 :Serial.print('G');counter =0;break;
-  case 8 :Serial.print('H');counter =0;break;
-  case 9 :Serial.print('I');counter =0;break;
-  case 10 :Serial.print('J');counter =0;break;
+  case 1 :lcd.print('A');counter =0;break;
+  case 2 :lcd.print('B');counter =0;break;
+  case 3 :lcd.print('C');counter =0;break;
+  case 4 :lcd.print('D');counter =0;break;
+  case 5 :lcd.print('E');counter =0;break;
+  case 6 :lcd.print('F');counter =0;break;
+  case 7 :lcd.print('G');counter =0;break;
+  case 8 :lcd.print('H');counter =0;break;
+  case 9 :lcd.print('I');counter =0;break;
+  case 10 :lcd.print('J');counter =0;break;
   default : counter =0;
 }
 }
